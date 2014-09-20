@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.5'
 # Use sqlite3 as the database for Active Record
@@ -42,6 +41,7 @@ gem 'unicorn-rails'
 # gem 'debugger', group: [:development, :test]
 
 group :development do
+  gem "i18n_generators", git: "git://github.com/amatsuda/i18n_generators.git"
   # debugger in browser
   gem 'better_errors'
   gem 'binding_of_caller'
@@ -57,6 +57,11 @@ gem 'haml-rails'
 
 # Simple Form
 gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
+# authentication
+gem 'devise', '~> 3.0.0.rc'
+gem 'devise-i18n'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 # extremely flexible way to upload files
 gem 'carrierwave'
