@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.5'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+#gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -27,10 +28,12 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
+# Sets the default server for rack (and rails) to unicorn
+gem 'unicorn-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -38,3 +41,55 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+group :development do
+  # debugger in browser
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
+
+  # debugger rails and change rails console
+  gem 'pry-rails'
+  gem 'awesome_print'
+end
+
+# Provides Haml generators for Rails 
+gem 'haml-rails'
+
+# Simple Form
+gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
+
+# extremely flexible way to upload files
+gem 'carrierwave'
+
+# file upload ajax javascript
+gem 'fine-uploader-rails'
+
+# Detect user browser information
+gem 'agent_orange'
+
+# class for http client
+gem 'rest-client'
+
+# pagination
+gem 'kaminari'
+
+# take away the noise of log files
+gem 'lograge'
+
+# captcha
+gem 'simple_captcha', :git => 'git://github.com/arthurmolina/simple-captcha.git'
+
+# color to prompt
+gem 'term-ansicolor'
+
+# cache for memcache
+gem 'dalli'
+
+# track changes to your models' data
+gem 'paper_trail', '~> 3.0.0'
+
+# Generate unique ID based on serials
+gem 'hashids'
+
+# Gravatar Binding
+gem 'gravtastic'
