@@ -13,4 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require bootstrap.min
+//= require docs.min
+//= require home
+//= ie10-viewport-bug-workaround
+//! require_tree .
