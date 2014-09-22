@@ -1,0 +1,8 @@
+- if notice.present?
+  %p.box.notice.bg-info
+    %i.fa.fa-info
+      = notice
+- if alert.present?
+  %p.box.alert.bg-danger
+    %i.fa.fa-exclamation
+      = alert

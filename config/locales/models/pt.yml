@@ -1,0 +1,9 @@
+pt:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              blank: "Por favor informe uma senha válida. Senha em branco."
+              too_short: "A senha é muito pequena. Por favor informe uma senha mais longa."

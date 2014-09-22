@@ -1,0 +1,24 @@
+pt:
+  projects:
+    base:
+      title: "Projetos"
+      title_edit: "Editar Projeto"
+      title_new: "Novo Projeto"
+      title_new_default: "Novo Projeto"
+      col_name: "Nome"
+      col_slug: "Apelido"
+      col_desc: "Descrição"
+      hint_slug: "Este será o apelido que aparecerá no link do projeto"
+    messages:
+      no_projects: "Nenhum projeto."
+      are_you_sure: "Você está certo disto?"
+      successful_created: "Projeto criado."
+      successful_updated: "Projeto atualizado."
+    button:
+      new_project: "Novo projeto"
+      show: "Ver"
+      edit: "Editar"
+      activate: "Ativar"
+      destroy: "Apagar"
+      back: "Voltar"
+      save: "Salvar"

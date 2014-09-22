@@ -1,0 +1,24 @@
+pt:
+  projects:
+    base:
+      title: "Projects"
+      title_edit: "Edit Project"
+      title_new: "New Project"
+      title_new_default: "New Project"
+      col_name: "Name"
+      col_slug: "Alias"
+      col_desc: "Description"
+      hint_slug: "This will be the alias that will link the project"
+    messages:
+      no_projects: "No project."
+      are_you_sure: "Are you sure?"
+      successful_created: "Project created."
+      successful_updated: "Project updated."
+    button:
+      new_project: "New project"
+      show: "Show"
+      edit: "Edit"
+      activate: "Activate"
+      destroy: "Destroy"
+      back: "Back"
+      save: "Save"

@@ -6,14 +6,22 @@ Rails.application.routes.draw do
   devise_for :users, path: "", path_names: { 
     sign_in: 'login', 
     sign_out: 'logout', 
-    registration: 'register', 
+    registration: 'register',
     sign_up: 'new' }
+
+  devise_scope :user do
+    get "register", to: "devise/registrations#new"
+    get "logout",   to: "devise/sessions#destroy"
+  end
+
 
   authenticated :user do
     root to: 'home#authenticated', as: :authenticated_root
   end
 
   root 'home#index'
+
+  get 'example' => 'example#index', as: :example
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
