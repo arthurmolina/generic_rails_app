@@ -33,11 +33,11 @@ class <%= controller_class_name %>Controller < ApplicationController
 
     respond_to do |format|
       if @<%= orm_instance.save %>
-        format.html { redirect_to @<%= singular_table_name %>, notice: <%= "'#{human_name} was successfully created.'" %> }
-        format.json { render :show, status: :created, location: <%= "@#{singular_table_name}" %> }
+        format.html { redirect_to <%= index_helper %>_url, notice: I18n.t("helpers.notices.created", model: <%= class_name %>.model_name.human) }
+        format.json { render :show, status: :created, location: <%= index_helper %>_url }
       else
         format.html { render :new }
-        format.json { render json: <%= "@#{orm_instance.errors}" %>, status: :unprocessable_entity }
+        format.json { render json: @<%= singular_table_name %>.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -47,22 +47,21 @@ class <%= controller_class_name %>Controller < ApplicationController
   def update
     respond_to do |format|
       if @<%= orm_instance.update("#{singular_table_name}_params") %>
-        format.html { redirect_to @<%= singular_table_name %>, notice: <%= "'#{human_name} was successfully updated.'" %> }
-        format.json { render :show, status: :ok, location: <%= "@#{singular_table_name}" %> }
+        format.html { redirect_to <%= index_helper %>_url, notice: I18n.t("helpers.notices.updated", model: <%= class_name %>.model_name.human) }
+        format.json { render :show, status: :ok, location: <%= index_helper %>_url }
       else
         format.html { render :edit }
-        format.json { render json: <%= "@#{orm_instance.errors}" %>, status: :unprocessable_entity }
+        format.json { render json: @<%= singular_table_name %>.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # DELETE <%= route_url %>/1
-  # DELETE <%= route_url %>/1.json
   def destroy
     @<%= orm_instance.destroy %>
     respond_to do |format|
-      format.html { redirect_to <%= index_helper %>_url, notice: <%= "'#{human_name} was successfully destroyed.'" %> }
-      format.json { head :no_content }
+      format.html { redirect_to <%= index_helper %>_url, notice: I18n.t("helpers.notices.destroyed", model: <%= class_name %>.model_name.human) }
+      format.js { head :ok }
     end
   end
 

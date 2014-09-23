@@ -3,11 +3,19 @@
 /* Padding below the footer and lighter body text */
 
 body {
+  padding-top: 50px;
+}
+
+body.home {
   padding-bottom: 40px;
+  padding-top: 0px !important;
   color: #5a5a5a;
 }
 
-
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
 
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */
