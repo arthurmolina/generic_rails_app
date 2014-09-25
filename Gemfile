@@ -58,7 +58,7 @@ gem 'haml-rails'
 # Simple Form
 gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
 # authentication
-gem 'devise', '~> 3.0.0.rc'
+gem 'devise', '~> 3.3.0'
 gem 'devise-i18n'
 gem 'omniauth'
 gem 'omniauth-facebook'
@@ -98,3 +98,6 @@ gem 'hashids'
 
 # Gravatar Binding
 gem 'gravtastic'
+
+# Active Admin
+gem 'activeadmin', github: 'activeadmin'

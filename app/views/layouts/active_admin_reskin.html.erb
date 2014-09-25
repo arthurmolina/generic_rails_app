@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-type"/>
+  <title><%= active_admin_application.site_title %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="/assets/bootstrap.min.css" rel="stylesheet">
+  <%= stylesheet_link_tag    "active_admin", :media => "all" %>
+  <%= javascript_include_tag "active_admin" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">GenericApp</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <%= admin_arbre_tag :global_navigation, active_admin_namespace.fetch_menu(:utility_navigation), :id => "utility_nav", :class => 'nav navbar-nav navbar-right' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <%= admin_arbre_tag :global_navigation, current_menu, :class => 'nav nav-sidebar' %>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+
+
+    <div class="title_bar" id="title_bar">
+      <div id="titlebar_left">
+        <%= admin_renderer(:build_breadcrumb, :title_bar) %>
+        <h2 id="page_title"><%= admin_renderer(:title) %><h2>
+      </div>
+      <div id="titlebar_right">
+        <%= admin_arbre_tag(:action_items, admin_renderer(:action_items_for_action)) if admin_renderer(:action_items_for_action).any? %>
+      </div>
+    </div>
+
+    <%= admin_renderer(:build_flash_messages) %>
+
+    <div id="active_admin_content" class="<%= admin_renderer(:skip_sidebar?) ? 'without_sidebar' : 'with_sidebar' %>">
+      <%= admin_renderer(:build_main_content_wrapper) %>
+      <%= admin_renderer(:build_sidebar) unless admin_renderer(:skip_sidebar?) %>
+    </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+    <div id="footer">
+      <p><%= "Powered by #{ link_to 'Digital Dialogue', 'http://digitaldialogue.com.au' }".html_safe %></p>
+    </div>
+
+</body>
+</html>
