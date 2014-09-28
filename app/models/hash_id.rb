@@ -9,5 +9,4 @@ class HashId < ActiveRecord::Base
   def self.find_by_param( input )
     find( Hashids.new( self.name, 8 ).decrypt( input ) ).first
   end
-
 end

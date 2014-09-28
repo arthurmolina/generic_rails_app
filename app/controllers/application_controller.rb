@@ -1,11 +1,12 @@
 class ApplicationController < ActionController::Base
+  include Pundit
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
   layout :layout_by_resource
   before_filter :configure_permitted_parameters, if: :devise_controller?
-  before_action :set_locale
+  #before_action :set_locale
 
   def append_info_to_payload(payload)
     super

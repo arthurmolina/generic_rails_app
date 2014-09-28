@@ -24,15 +24,15 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring',        group: :development
+#gem 'spring',        group: :development
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
-gem 'unicorn'
+#gem 'unicorn'
 # Sets the default server for rack (and rails) to unicorn
-gem 'unicorn-rails'
+#gem 'unicorn-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -50,6 +50,7 @@ group :development do
   # debugger rails and change rails console
   gem 'pry-rails'
   gem 'awesome_print'
+  gem 'quiet_assets'
 end
 
 # Provides Haml generators for Rails 
@@ -57,11 +58,18 @@ gem 'haml-rails'
 
 # Simple Form
 gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
-# authentication
+# Authentication
 gem 'devise', '~> 3.3.0'
 gem 'devise-i18n'
 gem 'omniauth'
 gem 'omniauth-facebook'
+
+# Autorization
+gem 'pundit'
+
+# Administration
+gem 'rails_admin'
+gem "rails_admin_pundit", :github => "sudosu/rails_admin_pundit"
 
 # extremely flexible way to upload files
 gem 'carrierwave'
