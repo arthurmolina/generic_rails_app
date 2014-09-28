@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   layout :layout_by_resource
   before_filter :configure_permitted_parameters, if: :devise_controller?
-  #before_action :set_locale
+  before_action :set_locale
 
   def append_info_to_payload(payload)
     super
