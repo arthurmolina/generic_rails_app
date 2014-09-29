@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   layout :layout_by_resource
   before_filter :configure_permitted_parameters, if: :devise_controller?
   #before_action :set_locale
+  #rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def append_info_to_payload(payload)
     super
@@ -36,6 +37,13 @@ class ApplicationController < ActionController::Base
 
   def extract_locale_from_accept_language_header
     request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+  end
+
+  private
+
+  def user_not_authorized
+    flash[:error] = 'You are not authorized to perform this action.'
+    redirect_to(request.referrer || root_path)
   end
 
 end
