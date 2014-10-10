@@ -5,7 +5,12 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  def admin?
-  	true
+  enum status: %i(common admin)
+
+  rails_admin do
+  	# Change visibility
+  	# https://github.com/sferik/rails_admin/wiki/Navigation
+  	#
+    # visible false
   end
 end
