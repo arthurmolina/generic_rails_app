@@ -20,7 +20,8 @@ Rails.application.routes.draw do
     root to: 'home#authenticated', as: :authenticated_root
   end
 
-  root 'home#index'
+  #root 'home#index'
+  root 'high_voltage/pages#show', id: 'home'
 
   get 'example' => 'example#index', as: :example
 

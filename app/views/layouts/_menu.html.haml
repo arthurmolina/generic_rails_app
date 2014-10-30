@@ -1,10 +1,10 @@
 %ul.nav.navbar-nav
-  %li.active
-    %a{:href => "#"} Home
-  %li
-    %a{:href => "#about"} About
-  %li
-    %a{:href => "#contact"} Contact
+  %li{ class: "#{current_page?(root_path) ? 'active' : ''}"}
+    = link_to 'Home', root_path
+  %li{ class: "#{current_page?(page_path('about')) ? 'active' : ''}"}
+    = link_to 'About', page_path('about')
+  %li{ class: "#{current_page?(page_path('contact')) ? 'active' : ''}"}
+    = link_to 'Contact', page_path('contact')
   %li.dropdown
     %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
       Dropdown

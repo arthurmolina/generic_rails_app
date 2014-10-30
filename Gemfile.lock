@@ -112,6 +112,7 @@ GEM
       railties (>= 4.0.1)
     hashids (1.0.0)
     hashie (3.3.1)
+    high_voltage (2.2.1)
     hike (1.2.3)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
@@ -300,6 +301,7 @@ DEPENDENCIES
   gravtastic
   haml-rails
   hashids
+  high_voltage (~> 2.2.1)
   i18n_generators!
   jbuilder (~> 2.0)
   jquery-rails

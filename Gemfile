@@ -106,3 +106,6 @@ gem 'hashids'
 
 # Gravatar Binding
 gem 'gravtastic'
+
+# Serve static pages
+gem 'high_voltage', '~> 2.2.1'
