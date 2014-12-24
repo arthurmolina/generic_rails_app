@@ -8,6 +8,7 @@ default: &default
   adapter: sqlite3
   pool: 5
   timeout: 5000
+  encoding: utf-8
 
 development:
   <<: *default
@@ -23,3 +24,23 @@ test:
 production:
   <<: *default
   database: db/production.sqlite3
+
+oracle_db:
+  <<: *default
+  adapter: oracle_enhanced
+  database: "(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=tcp)(HOST=172.19.4.19)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=PRD)))"
+  username: almox
+  password: almoxarifado
+
+postgres_db:
+  <<: *default
+  adapter: postgresql
+  database: post_db
+  username: user
+  password: pass
+  host: localhost
+  port: 5432
+
+sqlite3_db:
+  <<: *default
+  database: db/database.sqlite3
