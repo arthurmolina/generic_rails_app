@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   #devise_for :users
-  devise_for :users, path: "", path_names: { 
+  devise_for :users, controllers: { registrations: "registrations" , sessions: 'sessions'}, path: "", path_names: { 
     sign_in: 'login', 
     sign_out: 'logout', 
     registration: 'register',
@@ -14,13 +14,12 @@ Rails.application.routes.draw do
     get "register", to: "devise/registrations#new"
     get "logout",   to: "devise/sessions#destroy"
   end
-
+  get 'remote_sign_up' => 'remote_content#remote_sign_up'
 
   authenticated :user do
     root to: 'home#authenticated', as: :authenticated_root
   end
 
-  #root 'home#index'
   root 'high_voltage/pages#show', id: 'home'
 
   get 'example' => 'example#index', as: :example

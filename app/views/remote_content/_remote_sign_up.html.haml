@@ -1,0 +1,70 @@
+#sign_up_modal.modal.fade
+  .modal-dialog.modal-sm
+    #sign_up_content.modal-content
+      .modal-body
+        .section-title
+          %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"}
+            %i.fa.fa-times-circle
+          %img{src: asset_path('minilogo.png'), style: 'padding: 5px;'}
+
+        .tabs-wrapper
+          %ul.nav.nav-tabs
+            %li#sign_in_button.active
+              %a{href: '#sign_in', data:{toggle: 'tab'}}
+                Entrar
+            %li#sign_up_button
+              %a{href: '#sign_up', data:{toggle: 'tab'}}
+                Criar sua conta
+          .tab-content
+            #sign_up.tab-pane.fade
+              = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :remote => true, :format => :js,  :html => {:class => "form-signin"}) do |f|
+                .modal-body
+                  //= f.error_notification
+                  = f.input :username, :autofocus => true, :label => false, :input_html => {:class => 'form-control'}, :placeholder => "Usuário"
+                  = f.input :name, :autofocus => true, :label => false, :input_html => {:class => 'form-control'}, :placeholder => "Nome completo"
+                  = f.input :email, :autofocus => true, :label => false, :input_html => {:class => 'form-control'}, :placeholder => "E-mail"
+                  = f.input :password, :label => false, :input_html => {:class => 'form-control'}, :placeholder => "Senha"
+                  = f.input :password_confirmation, :label => false, :input_html => {:class => 'form-control'}, :placeholder => "Confirmar senha"
+                  = link_to "Esqueceu a senha?", new_user_password_path
+                .modal-footer
+                  .form-actions
+                    %a{ :href => "#", :class => "btn btn-sm", "data-dismiss" => "modal" } Cancelar
+                    = f.button :submit, "Criar conta", :class => "btn btn-success"
+
+            #sign_in.tab-pane.fade.active.in
+              = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :remote => true, :format => :js,  :html => {:class => "form-signin sign_in_user"}) do |f|
+                .modal-body
+                  //= f.error_notification
+                  = f.input :email, :autofocus => true, :label => false, :input_html => {:class => 'form-control'}, :placeholder => "E-mail"
+                  = f.input :password, :label => false, :input_html => {:class => 'form-control'}, :placeholder => "Senha"
+                  = f.input :remember_me, label: 'Lembre-me', as: :boolean if devise_mapping.rememberable?
+                  
+                  = link_to "Esqueceu a senha?", new_user_password_path
+                .modal-footer
+                  .form-actions
+                    %a{ :href => "#", :class => "btn btn-sm", "data-dismiss" => "modal" } Cancelar
+                    = f.button :submit, "Entrar", :class => "btn btn-success"
+      :javascript
+
+        $("form.sign_in_user").bind("ajax:error", function(e, data, status, xhr){
+          if(data.success){
+            if( data.status == 200 ) {
+              $('.modal').modal('hide');
+
+              if($('#flash').length > 0) {
+                $('#flash').remove();
+                $('.flashes').append( "<div id=\'flash\'>\n<div class=\'alert alert-dismissable alert-success\'>\n<button aria-hidden=\'true\' class=\'close\' data-dismiss=\'alert\'>×<\/button>\n<p>Entrou com sucesso... Aguarde, redirecionando...<\/p>\n<\/div>\n<\/div>\n" );
+              }
+              else {
+                
+                $('.flashes').append( "<div id=\'flash\'>\n<div class=\'alert alert-dismissable alert-success\'>\n<button aria-hidden=\'true\' class=\'close\' data-dismiss=\'alert\'>×<\/button>\n<p>Entrou com sucesso... Aguarde, redirecionando...<\/p>\n<\/div>\n<\/div>\n" );
+              }
+              $('#loading').show();
+              if (typeof login_action == 'function') login_action(null, null, JSON.parse(data.responseText).redirect);
+
+            } else {
+              if($('#flash').length > 0) $('#flash').remove();
+              $('.modal-body').prepend( "<div id=\'flash\'>\n<div class=\'alert alert-dismissable alert-danger\'>\n<button aria-hidden=\'true\' class=\'close\' data-dismiss=\'alert\'>×<\/button>\n<p>" + data.responseText + "<\/p>\n<\/div>\n<\/div>\n" );
+            }
+          }
+        });

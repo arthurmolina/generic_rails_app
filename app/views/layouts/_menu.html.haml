@@ -22,3 +22,12 @@
         %a{:href => "#"} Separated link
       %li
         %a{:href => "#"} One more separated link
+
+  - if !current_user.present?
+    %li
+      = link_to "Login", remote_sign_up_path, :remote => true
+      - #= link_to new_user_session_path do
+      - #  Entrar
+  - else
+    %li
+      = link_to "Sair", logout_path

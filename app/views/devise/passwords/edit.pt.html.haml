@@ -1,6 +1,6 @@
 .container
   .form-signin
-    %h2.form-signin-heading Mude a sua senha
+    %h2.form-signin-heading Mudar a sua senha?
     = simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|
       = f.error_notification
       = f.input :reset_password_token, as: :hidden, label: 'Token de redefinição de senha'

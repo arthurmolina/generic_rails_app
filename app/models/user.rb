@@ -7,6 +7,10 @@ class User < ActiveRecord::Base
 
   enum status: %i(common admin)
 
+  def status_enum
+    User.statuses
+  end
+
   rails_admin do
   	# Change visibility
   	# https://github.com/sferik/rails_admin/wiki/Navigation

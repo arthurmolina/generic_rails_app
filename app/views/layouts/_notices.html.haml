@@ -1,8 +1,6 @@
-- if notice.present?
-  %p.box.notice.bg-info
-    %i.fa.fa-info
-      = notice
-- if alert.present?
-  %p.box.alert.bg-danger
-    %i.fa.fa-exclamation
-      = alert
+%session.col-md-12.user-fundo.flashes
+  #flash
+    - flash.each do |type, message|
+      .alert.alert-dismissable{ :class => twitterized_type(type) }
+        %button.close{"data-dismiss" => "alert", "aria-hidden" => "true"} ×
+        %p= message

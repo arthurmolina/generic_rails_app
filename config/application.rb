@@ -20,5 +20,26 @@ module GenericRailsApp
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.load_path += Dir[Rails.root.join(Rails.root, 'config', 'locales', '**', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :en
+
+
+    config.serve_static_assets = true
+    config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
+    config.assets.compile = true
+
+    config.assets.precompile << Proc.new do |path|
+          if path =~ /\.(css|js|otf|eot|svg|ttf|woff)\z/
+            full_path = Rails.application.assets.resolve(path).to_path
+            app_assets_path = Rails.root.join('app', 'assets').to_path
+            if full_path.starts_with? app_assets_path
+              puts "including asset: " + full_path
+              true
+            else
+              puts "excluding asset: " + full_path
+              false
+            end
+          else
+            false
+          end
+        end
   end
 end

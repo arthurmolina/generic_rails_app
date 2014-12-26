@@ -1,0 +1,13 @@
+%session.col-md-12.user-fundo
+  .container
+    .row
+      .col-md-12.text-right
+        - if current_user.present?
+          = link_to edit_user_registration_path do
+            - #%i.fa.fa-user
+            = current_user.name
+          &nbsp;(
+          = link_to destroy_user_session_path do
+            - #%i.fa.fa-sign-out
+            sair
+          )

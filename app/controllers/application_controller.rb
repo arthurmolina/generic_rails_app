@@ -9,6 +9,15 @@ class ApplicationController < ActionController::Base
   #before_action :set_locale
   #rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
+  def after_sign_up_path_for(resource)
+    root_url # After login, it goes to this
+  end
+
+
+  def after_sign_in_path_for(resource)
+    root_url # After register, it goes to this
+  end
+
   def append_info_to_payload(payload)
     super
     payload[:host] = request.host
@@ -27,6 +36,7 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:username, :email) }
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :name, :email, :password, :password_confirmation) }
+    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :name, :email, :password, :password_confirmation, :current_password) }
   end
 
   def set_locale

@@ -1,0 +1,12 @@
+$('.modal').modal('hide')
+
+if($('#flash').length > 0) {
+  $('#flash').remove();
+  $('.flashes').append("<%= escape_javascript raw(flash_normal) %>");
+}
+else {
+  $('.modal').modal('hide')
+  $('.flashes').append("<%= escape_javascript raw(flash_normal) %>");
+}
+
+if (typeof login_action == 'function') { login_action('<%= controller_name %>', '<%= action_name %>', '<%= @sign_in_path %>'); }
