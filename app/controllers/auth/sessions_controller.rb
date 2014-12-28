@@ -1,4 +1,4 @@
-class SessionsController < Devise::SessionsController
+class Auth::SessionsController < Devise::SessionsController
   #protected
 
   # CUSTOM (Mix of actual devise controller method and ajax customization from http://natashatherobot.com/devise-rails-sign-in/):

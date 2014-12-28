@@ -72,7 +72,7 @@ gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
 # Authentication
 gem 'devise', '~> 3.3.0'
 gem 'devise-i18n'
-gem 'omniauth'
+#gem 'omniauth'
 gem 'omniauth-facebook'
 
 # Autorization

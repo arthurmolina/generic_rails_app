@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   #devise_for :users
-  devise_for :users, controllers: { registrations: "registrations" , sessions: 'sessions'}, path: "", path_names: { 
+  devise_for :users, controllers: { omniauth_callbacks: "auth/omniauth_callbacks", registrations: "auth/registrations" , sessions: 'auth/sessions'}, path: "", path_names: { 
     sign_in: 'login', 
     sign_out: 'logout', 
     registration: 'register',
@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get "register", to: "devise/registrations#new"
     get "logout",   to: "devise/sessions#destroy"
+    #get 'sign_out', to: 'devise/sessions#destroy', as: :destroy_user_session
   end
   get 'remote_sign_up' => 'remote_content#remote_sign_up'
 

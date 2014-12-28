@@ -1,4 +1,4 @@
-class RegistrationsController < Devise::RegistrationsController
+class Auth::RegistrationsController < Devise::RegistrationsController
  # POST /resource
   def create
     build_resource(sign_up_params)
@@ -19,7 +19,7 @@ class RegistrationsController < Devise::RegistrationsController
         }
         format.js {
           flash[:notice] = "Account created."
-          render :template => "remote_content/devise_success_sign_up.js.erb"
+          render template: "remote_content/devise_success_sign_up.js.erb"
           flash.discard
           sign_up(resource_name, resource)
         }
@@ -32,7 +32,7 @@ class RegistrationsController < Devise::RegistrationsController
         }
         format.js {
           flash[:alert] = @user.errors.full_messages.to_sentence
-          render :template => "remote_content/devise_errors.js.erb"
+          render template: "remote_content/devise_errors.js.erb"
           flash.discard
         }
       end
